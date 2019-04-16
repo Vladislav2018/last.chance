@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('doc/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+Route::get('/confirm', function()
+{
+    return view('confirm');
+})->name('confirm');
+Route::post('/confirm', 'EmployeeController@store')->name('addworker');
+Route::get('/home', 'HomeController@index')->name('home');

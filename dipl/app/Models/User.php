@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
     public function employeeUserId()
     {
-        
+        return $this->belongsTo('App\Models\Employee', 'id', 'user_id');
     }
 
 }

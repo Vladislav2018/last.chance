@@ -20,7 +20,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                <div class="card-header">Добавить сотрудника</div>
+                <div class="card-header">Ваши данные</div>
 
                     <div class="card-body">
                     <form method="POST" action="{{ route('addworker') }}">
@@ -37,7 +37,8 @@
                                             <strong>{{--{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif--}}
-                                
+                               </div> 
+                            </div>
                             {{-- ввод фамилии--}}
                             <div class="form-group row">
                                 <label for="last_name" class="col-md-4 col-form-label text-md-right">{{--{{/**/}}--}}Фамилия</label>
@@ -66,21 +67,24 @@
                                     @endif--}}
                                 </div>
                             </div>
-                        </div>
+                        <div class="form-group row">
                         <label for="head_id" class="col-md-4 col-form-label text-md-right">{{--{{/**/}}--}}Идентификатор руководителя</label>
-
-                        <div class="col-md-5">
-                            <input id="head_id" type="number" min='2' max= '9223372036854775807'class="form-control" name="head_id" value="{{ old('head_id') }}" required autofocus>
+                        
+                        <div class="col-md-3">
+                            <input id="head_id" type="number" min='1' max= '9223372036854775807'class="form-control" name="head_id" value="{{ old('head_id') }}" required autofocus>
 
                             {{--@if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{--{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif--}}
+                        </div> 
                         </div>
-                    </div>
                     <button type="submit" class="btn btn-primary">Оправить
                     </button>
+                    </div>
+                </div>
+
                     </form>
                     </div>
 

@@ -53,7 +53,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->middleware('confirmated');
+        $id = auth()->user()->id;
+        return view('account', $id);
     }
 
     /**

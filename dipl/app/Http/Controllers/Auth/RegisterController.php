@@ -30,7 +30,7 @@ class RegisterController extends Controller
      */
     protected function redirectTo()
     {
-        return url('confirm');
+        return url('/users',auth()->user()->id);   
     }
 
     /**

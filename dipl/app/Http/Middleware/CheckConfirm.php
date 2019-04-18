@@ -24,7 +24,7 @@ class CheckConfirm
             dump($empl);
             if($empl == null)// если запрос вернул null
             {
-                return route('confirm');                    //заставляем его конформится
+                return redirect()->route('confirm');                    //заставляем его конформится
             }
             else
             {                
@@ -34,7 +34,7 @@ class CheckConfirm
         }
         else
         {
-            return route('login');
+            return redirect()->route('login');
         }
 
     }

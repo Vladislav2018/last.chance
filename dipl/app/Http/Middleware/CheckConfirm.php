@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Employee;
+use App\Employee;
 
 class CheckConfirm
 {
@@ -15,19 +15,21 @@ class CheckConfirm
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $id)
+    public function handle($request, Closure $next)
     {
         if(Auth::check())           //если пользователь авторизован
         {
-            dump(Auth::user());
             $id = Auth::id();        //сохраняем его id
-            if(Employee::where('user_id', $id)->get()!=null)// если запрос не вернул null
-            {
-                return $next($request);                     //то пропускаем пользователя дальше
-            }
-            else
+            $empl = Employee::where('user_id','=', $id)->first();
+            dump($empl);
+            if($empl == null)// если запрос вернул null
             {
                 return route('confirm');                    //заставляем его конформится
+            }
+            else
+            {                
+                dump($empl);
+                return $next($request);                     //то пропускаем пользователя дальше
             }
         }
         else

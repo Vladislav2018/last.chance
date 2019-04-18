@@ -8,6 +8,6 @@ class Employee_Org extends Model
 {
     public function Org()
     {
-        return $this->belongsTo('App\Models\Employee', 'employee_id', 'id');    
+        return $this->belongsTo('App\Employee', 'employee_id', 'id');    
     }
 }

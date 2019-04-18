@@ -8,11 +8,11 @@ class Group extends Model
 {
     public function Groups()
     {
-        return $this->belongsTo('App\Models\Employee', 'head_id', 'head_id');    
+        return $this->belongsTo('App\Employee', 'head_id', 'head_id');    
     }
     public function groupResult()
     {
-        return $this->hasOne('App\Models\Group_result', 'group_id', 'id');    
+        return $this->hasOne('App\Group_result', 'group_id', 'id');    
     }
     
 }

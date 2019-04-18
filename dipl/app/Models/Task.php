@@ -8,6 +8,6 @@ class Task extends Model
 {
     public function TasksEmployee()
     {
-        return $this->belongsTo('App\Models\Employee', 'manager_id', 'head_id');    
+        return $this->belongsTo('App\Employee', 'manager_id', 'head_id');    
     }
 }

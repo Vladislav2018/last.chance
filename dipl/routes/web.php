@@ -21,5 +21,5 @@ Route::get('/confirm', function()
     return view('confirm');
 })->name('confirm');
 Route::post('/confirm', 'EmployeeController@store')->name('addworker');
-Route::get('users/{id}', 'EmployeeController@show')->name('account');
+Route::get('users/{id}', 'EmployeeController@show')->where('id', '[0-9]+')->name('account');
 Route::get('/home', 'HomeController@index')->name('home');

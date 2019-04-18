@@ -17,6 +17,7 @@ class EmployeeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('confirmated');
     }
 
     public function index()
@@ -53,9 +54,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $this->middleware('confirmated');
-        $id = auth()->user()->id;
-        return view('account', $id);
+
+        return view('account');
     }
 
     /**

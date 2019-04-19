@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Employee;
-use App\Models\User;
+use App\Employee;
+use App\User;
 
 class EmployeeController extends Controller
 {
@@ -16,8 +16,8 @@ class EmployeeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('confirmated');
+        //$this->middleware('auth');
+        //$this->middleware('confirmated');
     }
 
     public function index()
@@ -43,7 +43,21 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if($request->isMethod('post'))
+        {
+            $newEmployee = Employee::updateOrCreate([
+                'user_id' => mt_rand(1 , 5),
+            ],[
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'patronymic' => $request->get('patronymic'),
+                'head_id'=> $request->get('head_id')
+            ]);
+            $id = Employee::latest()->select('user_id')->get();
+            dump($id);
+            return redirect()->route('account',['id'=>$id]);
+        }
+
     }
 
     /**

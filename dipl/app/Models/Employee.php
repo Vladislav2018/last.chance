@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+    protected $guarded = [];
     public function employeeUserId()
     {
         return $this->hasOne('App\User', 'id', 'user_id');

@@ -71,13 +71,19 @@
                         <label for="head_id" class="col-md-4 col-form-label text-md-right">{{--{{/**/}}--}}Идентификатор руководителя</label>
                         
                         <div class="col-md-3">
-                            <input id="head_id" type="number" min='1' max= '9223372036854775807'class="form-control" name="head_id" value="{{ old('head_id') }}" required autofocus>
+                            <input id="head_id" type="number" min='1' max= '9223372036854775807'class="form-control" name="head_id" value="{{ old('head_id') }}" autofocus>
 
                             {{--@if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{--{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif--}}
+                        </div>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="head" id="head" value="head_id" checked>
+                            Я руководитель
+                          </label>
                         </div> 
                         </div>
                     <button type="submit" class="btn btn-primary">Оправить

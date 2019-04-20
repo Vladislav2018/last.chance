@@ -16,8 +16,8 @@ class EmployeeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
-        //$this->middleware('confirmated');
+        $this->middleware('auth');
+        $this->middleware('confirmated');
     }
 
     public function index()
@@ -53,9 +53,9 @@ class EmployeeController extends Controller
                 'patronymic' => $request->get('patronymic'),
                 'head_id'=> $request->get('head_id')
             ]);
-            $id = Employee::latest()->select('user_id')->get();
+            $id = Employee::latest()->select('user_id')->first();
             dump($id);
-            return redirect()->route('account',['id'=>$id]);
+            return redirect()->route('account',['id'=>$id]);//почему-то id не заполняет в ссылку
         }
 
     }
